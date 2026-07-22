@@ -3,11 +3,11 @@
 // task 1
 // Создайте переменные, затем сложите их и выведите результат в консоль разработчика
 
-let x = 20;
-let y = 58;
-let z = 42;
+const x = 20;
+const y = 58;
+const z = 42;
 
-let sumValues = x + y + z;
+const sumValues = x + y + z;
 console.log(sumValues);
 
 // task 2
@@ -27,15 +27,15 @@ console.log(myAgeInSeconds);
 // Создайте две переменные. Поместите в них переменную count и превратите в строку, 
 // а userName наоборот в число. Попробуйте реализовать задачу двумя разными способами.
 
-let count = 42;
-let userName = '42';
+const count = 42;
+const userName = '42';
 
-let count1 = String(count);
-let count2 = '' + count;
-let count3 = `${count}`;
+const count1 = String(count);
+const count2 = '' + count;
+const count3 = `${count}`;
 
-let userName1 = Number(userName);
-let userName2 = +userName
+const userName1 = Number(userName);
+const userName2 = +userName
 
 
 console.log(typeof count);
@@ -52,24 +52,24 @@ console.log(typeof userName2);
 // Сложите переменные так, чтобы в результате получилось выражение: 12 белых медведей 
 // и результат выведите в консоль.
 
-let a = 1;
-let b = 2;
-let c = 'белых медведей';
+const a = 1;
+const b = 2;
+const c = 'белых медведей';
 
-let phrase = `${a}${b} ${c}`;
+const phrase = `${a}${b} ${c}`;
 console.log(phrase);
 
 // task 5
 // Создайте переменные и поместите в них нижеприведенные слова. Затем создайте еще одну 
 // переменную lengthWords и посчитайте в ней длину всех слов из списка
 
-let firstWord = 'доступ';
-let secondWord = 'морпех';
-let thirdWord = 'наледь';
-let forthWord = 'попрек';
-let fifthWord = 'рубило';
+const firstWord = 'доступ';
+const secondWord = 'морпех';
+const thirdWord = 'наледь';
+const forthWord = 'попрек';
+const fifthWord = 'рубило';
 
-let lengthWords = firstWord + secondWord + thirdWord + forthWord + fifthWord
+const lengthWords = firstWord + secondWord + thirdWord + forthWord + fifthWord
 
 console.log(lengthWords.length);
 
@@ -77,9 +77,9 @@ console.log(lengthWords.length);
 // Создать 3 переменные разных типов и вывести в консоль для каждой из них строку следующего вида
 // `Variable: %variable name% have type: %type variable%`
 
-let num = 5;
-let str = 'text';
-let isTruthful = true;
+const num = 5;
+const str = 'text';
+const isTruthful = true;
 
 console.log(`${num}: num have type: ${typeof num}`);
 console.log(`${str}: str have type: ${typeof str}`);
@@ -88,8 +88,8 @@ console.log(`${isTruthful}: isTruthful have type: ${typeof isTruthful}`);
 // task 7
 // Запросить у пользователя имя и возраст и вывести их в консоль.
 
-let userFirstName = prompt('What is your name?', '');
-let userAge = prompt('What is your age?');
+const userFirstName = prompt('What is your name?', '');
+const userAge = prompt('What is your age?');
 
 console.log(userFirstName);
 console.log(userAge);
@@ -116,13 +116,13 @@ console.log(bb);
 //В данном послании скрыт шифр! Чтобы его разгадать нам нужно соединить все вторые символы слов!
 // Создайте переменную cipher и поместите туда необходимые символы
 
-let codeWord1 = "обернись";
-let codeWord2 = "неужели";
-let codeWord3 = "огурцы";
-let codeWord4 = "липкие";
-let codeWord5 = "?!";
+const codeWord1 = "обернись";
+const codeWord2 = "неужели";
+const codeWord3 = "огурцы";
+const codeWord4 = "липкие";
+const codeWord5 = "?!";
 
-let cipher = codeWord1[1] + codeWord2[1] + codeWord3[1] + codeWord4[1] + codeWord5[1];
+const cipher = codeWord1[1] + codeWord2[1] + codeWord3[1] + codeWord4[1] + codeWord5[1];
 console.log(cipher);
 
 
