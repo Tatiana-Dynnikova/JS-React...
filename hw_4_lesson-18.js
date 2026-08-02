@@ -54,36 +54,41 @@ function getCredit(sumCreadit) {
 // После вызова функция должна вернуть переданную строку, обрезанную по значениям «от» и «по».
 
 function trimString(string, start, end) {
+    let subString = '';
 
-    return string.substring(start, end);
+    for (let i = 0; i < string.length; i++) {
+        if(i > start && i < end) {
+            subString += string[i];
+        }
+    }
+
+    return subString;
+    // return string.substring(start, end);
 }
 
-console.log(trimString('I am learning JavaScript.', 14, 24));
+console.log(trimString('I am learning JavaScript.', 13, 24));
 
 
 // task 4. +
 //Написать функцию getSumNumbers. Она будет принимать число и вычислять
 //сумму цифр, из которых состоит число. Для 2021 это будет 5
 
+function getSumNumbers(number) {
+    let sum = 0;
+    let stringNumber = String(number);
+    
+    for (let i = 0; i < stringNumber.length; i++) {
+        sum += +stringNumber[i];
+    }
 
-// ?? ПОЧЕМУ ТАК НЕ РАБОТАЕТ ?
+    return sum;
+}
 
 // function getSumNumbers(number) {
-//     let sum = 0;
-//     String(number);
-    
-//     for (let i = 0; i <= number.length; i++) {
-//         sum += +number[i];
-//     }
-
-//     return sum;
+//     return number.toString()
+//         .split('')
+//         .reduce((sum, numbers) => sum + +numbers, 0);
 // }
-
-function getSumNumbers(number) {
-    return number.toString()
-        .split('')
-        .reduce((sum, numbers) => sum + +numbers, 0);
-}
 
 console.log(getSumNumbers(2021));
 
@@ -162,3 +167,27 @@ function constructTriangle (a, b, c) {
 }
 
 console.log(constructTriangle(2, 2, 6));
+
+// task 2. 
+//Ваша задача - разбить плитку шоколада заданного размера n x m на
+// маленькие квадраты. Каждый квадрат имеет размер 1x1 и не может быть
+// разбит. Реализуйте функцию, которая будет возвращать минимальное
+// количество необходимых надломов.
+// Например, если вам дается плитка шоколада размером 2 x 1, вы можете
+// разделить ее на отдельные квадраты всего за один надлом, но для размера 3 x
+// 1 вы должны сделать два надлома.
+// Если входные данные недействительны, вы должны вернуть 0 (поскольку
+// надломы не требуются, если у нас нет шоколада для разделения). Ввод всегда
+// будет неотрицательным целым числом.
+
+function breakChocolate (n, m) {
+    const pieces = n * m - 1;
+
+    if (n <= 0 || n <= 0 ) {
+        return  0;
+    }
+    return pieces;
+}
+
+console.log(breakChocolate(2, 4));
+
