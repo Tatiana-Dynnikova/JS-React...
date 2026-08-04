@@ -56,39 +56,44 @@ function getCredit(sumCreadit) {
 function trimString(string, start, end) {
     let subString = '';
 
-    for (let i = 0; i < string.length; i++) {
-        if(i > start && i < end) {
-            subString += string[i];
-        }
+    // for (let i = 0; i < string.length; i++) {
+    //     if(i > start && i < end) {
+    //         subString += string[i];
+    //     }
+    // }
+
+    for (i = start; i < end; i++) {
+        subString += string[i];
     }
 
     return subString;
     // return string.substring(start, end);
 }
 
-console.log(trimString('I am learning JavaScript.', 13, 24));
+console.log(trimString('I am learning JavaScript.', 14, 24));
 
 
 // task 4. +
 //Написать функцию getSumNumbers. Она будет принимать число и вычислять
 //сумму цифр, из которых состоит число. Для 2021 это будет 5
 
-function getSumNumbers(number) {
-    let sum = 0;
-    let stringNumber = String(number);
-    
-    for (let i = 0; i < stringNumber.length; i++) {
-        sum += +stringNumber[i];
-    }
-
-    return sum;
-}
-
 // function getSumNumbers(number) {
-//     return number.toString()
-//         .split('')
-//         .reduce((sum, numbers) => sum + +numbers, 0);
+//     let sum = 0;
+//     let stringNumber = String(number);
+    
+//     for (let i = 0; i < stringNumber.length; i++) {
+//         sum += +stringNumber[i];
+//     }
+
+//     return sum;
 // }
+
+function getSumNumbers(number) {
+    let sumNumbers = number.toString()
+        .split('')
+        .reduce((sum, numbers) => sum + +numbers, 0);
+    return sumNumbers;
+}
 
 console.log(getSumNumbers(2021));
 
