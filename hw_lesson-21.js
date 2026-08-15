@@ -126,18 +126,18 @@ console.log(student5.getSumCredit('B'))
 const arrStudents = [student1, student2, student3, student4, student5];
 console.log(arrStudents);
 
-function getTotalCredit(arr) {
-  let total = 0;
-  for (let i = 0; i < arr.length; i++) {
-    total += arr[i].getSumCredit();
-  }
-  return total;
-}
+// function getTotalCredit(arr) {
+//   let total = 0;
+//   for (let i = 0; i < arr.length; i++) {
+//     total += arr[i].getSumCredit();
+//   }
+//   return total;
+// }
 
-// Попытка так сделать. не разобралась пока... 
-// let TotalSumCredit = arrStudents.reduce((sum, function()) { let item in return sum += sumCredit}, 0);
+// через метод reduce
+const TotalSumCredit = arrStudents.reduce((sum, element, index) => sum += arrStudents[index].getSumCredit(), 0);
 
-console.log(`Общая сумма ередита на группу: ${getTotalCredit(arrStudents)}`);
+console.log(`Общая сумма ередита на группу: ${TotalSumCredit}`);
 
 
 //task 2.
@@ -165,14 +165,97 @@ function deleteVowel(str) {
 console.log(deleteVowel(str))
 
 
-//task 3.  В ПРОЦЕССЕ
+//task 3.
 //Нет истории, нет теории
 // В приведенных ниже примерах показано, как написать функцию:
-
-accum('abcd') // -> 'A-Bb-Ccc-Dddd'
-accum('RqaEzty') // -> 'R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy'
-accum('cwAt') // -> 'C-Ww-Aaa-Tttt'
+// accum('abcd') // -> 'A-Bb-Ccc-Dddd'
+// accum('RqaEzty') // -> 'R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy'
+// accum('cwAt') // -> 'C-Ww-Aaa-Tttt'
 
 // Параметр — это строка, которая включает только буквы от a...z и A...Z
 
+function accum(string) {
+    let newString = string
+        .toLowerCase()
+        .split('')
+        .map((item, index) => item.toUpperCase() + item.repeat(index))
+        .join('-');
 
+    return newString;
+}
+
+console.log(accum('abcd'));
+
+//task 4.
+//Самый высокий и самый низкий
+// В этом небольшом задании вам дается строка чисел, разделенных пробелами,
+// и вы должны возвращать наибольшее и наименьшее число.
+// highAndLow('1 2 3 4 5') // return '5 1'
+// highAndLow('1 2 -3 4 5') // return '5 -3'
+// highAndLow('1 9 3 4 -5') // return '9 -5'
+// Строка вывода должна состоять из двух чисел, разделенных одним пробелом,
+// при этом наибольшее число должно быть первым
+
+function highAndLow(numbers) {
+  const arr = numbers.split(' ').map(Number);
+  const max = Math.max(...arr);
+  const min = Math.min(...arr);
+  return `${max} ${min}`;
+}
+
+
+console.log(highAndLow('1 2 3 4 5'));
+console.log(highAndLow('1 2 -3 4 5'));
+console.log(highAndLow('1 9 3 4 -5'));
+
+
+//task 5.
+//Изограммы
+// Изограмма - это слово, в котором нет повторяющихся букв, последовательных
+// или непоследовательных. Реализуйте функцию, которая определяет, является
+// ли строка, содержащая только буквы, изограммой. Предположим, что пустая
+// строка является изограммой. Регистр букв мы игнорируем.
+// isIsogram("Dermatoglyphics") == true
+// isIsogram("aba") == false
+// isIsogram("moOse") == false // -- ignore letter case
+
+function isIsogram(str) {
+    let newStr = str.toLowerCase();
+   
+    for(let i = 0; i < newStr.length; i++) {
+        for(let j = i + 1; j < newStr.length; j++) {
+            if (newStr[i] === newStr[j]) {
+                return false;
+            } 
+        }
+    }
+    return true;
+}
+
+console.log(isIsogram("Dermatoglyphics"));
+console.log(isIsogram("aba"));
+console.log(isIsogram("moOse"));
+
+
+//task 6.
+//Считаем коды символов
+// Учитывая строку, превратите каждый символ в его код символа ASCII и
+// соедините их вместе, чтобы создать число. Поместите результат в
+// переменную total1 .
+// Затем замените все числа 7 на число 1 и назовите это число total2 .
+// После верните разницу между суммой цифр total1 и total2 .
+// 'ABC' --> 'A' = 65, 'B' = 66, 'C' = 67 --> 656667
+
+function getCodeChars(str) {
+    let total1 = str
+    .split('')
+    .map((char) => char.charCodeAt(0))
+    .join('');
+
+    let total2 = total1.replace(/7/g, '1');
+    let gap = total1 - total2;
+
+    return `${total1} ${total2} ${gap}`;
+}
+
+console.log(getCodeChars('ABC'));
