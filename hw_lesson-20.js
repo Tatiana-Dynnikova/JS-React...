@@ -36,17 +36,9 @@ console.log(numbers)
 numbers.splice(0, numbers.length);
 console.log(numbers);
 
-// 3   ТАК МОЖНО?
+// 3 
 // while (numbers.length > 0) {
 //     numbers.pop();
-//     console.log(numbers);
-//     numbers.length--
-// }
-
-// 4   ТАК МОЖНО?
-// for (numbers.length; numbers.length > 0; numbers.length--) {
-//     numbers.shift();
-//     console.log(numbers);
 // }
 
 
@@ -61,12 +53,12 @@ const students = ['Polina', 'Dasha', 'Masha'];
 // студента Andrey .
 // Полученный результат не забудьте вывести в консоль
 
-const students2 = students.splice(2, 1, 'Borya');
-console.log(students2);
+students.pop()
+students.push('Borya');
 console.log(students);
 
-const students3 = students.splice(0, 1, 'Andrey');
-console.log(students3);
+students.shift();
+students.unshift('Andrey');
 console.log(students);
 
 
@@ -134,19 +126,32 @@ const matrix = [
 
 // Выведите в консоль среднее значение чисел в многомерном массиве.
 
-const res = matrix.join(',').split(',');
-const res2 = matrix.map(row => row.join(','));
-const res3 = res.map(element => +element);
+let sumMatrix = 0;
+let count = 0;
 
-let sum = 0;
-
-for (let i = 0; i < res3.length; i++) {
-    sum += res3[i];
+for (let i = 0; i < matrix.length; i++) {
+  for (let j = 0; j < matrix[i].length; j++) {
+    sumMatrix += matrix[i][j];
+    count++;
+  }
 }
 
-const average = sum / res3.length;
+const averageMatrix = sumMatrix / count;
+console.log(averageMatrix);
 
-console.log(average);
+// const res = matrix.join(',').split(',');
+// const res2 = matrix.map(row => row.join(','));
+// const res3 = res.map(element => +element);
+
+// let sum = 0;
+
+// for (let i = 0; i < res3.length; i++) {
+//     sum += res3[i];
+// }
+
+// const average = sum / res3.length;
+
+// console.log(average);
 
 
 // task 3.
@@ -182,14 +187,11 @@ console.log(arr2);
 const randNums = [];
 
 for (let i = 0; i <= 5; i++) {
-    randNums[i] = Math.random().toFixed(1);
+    randNums[i] = +Math.random().toFixed(1);
 }
 
 console.log(randNums);
 
-const randNums2 = randNums.map(num => +num);
-console.log(randNums2);
-
-const cubeArr = randNums2.map(item => (item ** 3).toFixed(3));
+const cubeArr = randNums.map(item => (item ** 3).toFixed(3));
 console.log(cubeArr);
 
