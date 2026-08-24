@@ -4,11 +4,14 @@ const fragment = document.createDocumentFragment();
 const createDomElement = (tag, classes, text) => {
     const newElement = document.createElement(tag);
 
-    if (typeof classes === String) {
-        newElement.className(classes);
-    } else {
-        newElement.classList.add(`${classes[0]}`, `${classes[1]}`);
+    for (let key of classes) {
+        newElement.classList.add(key);
     }
+    // if (typeof classes === String) {
+    //     newElement.className(classes);
+    // } else {
+    //     newElement.classList.add(`${classes[0]}`, `${classes[1]}`);
+    // }
 
     if (text) {
         newElement.textContent = text;
