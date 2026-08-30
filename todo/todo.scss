@@ -53,7 +53,7 @@ body {
 
     &__input {
         padding: 15px 10px;
-        color: $color-text-placeholder;
+        color: $primary-color-text;
         font-size: 20px;
         font-weight: 600;
         text-align: center;
@@ -99,21 +99,6 @@ body {
         border: 3px solid black;
 
         position: relative;
-        
-        &::before {
-            content: '';
-            display: block;
-            background-image: url(/todo/media/label-no-bg.png);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
-            width: 100%;
-            height: 100%;
-
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
     }
     
     &__title {
@@ -134,7 +119,7 @@ body {
         justify-content: space-between;
 
 
-        width: 120px;
+        width: 130px;
         height: 100%;
     }
     &__btn-close {
@@ -158,6 +143,7 @@ body {
         }
     }
     &__date {
+        font-variant-numeric: lining-nums;
         background-color: #FFF;
         padding: 5px;
         font-size: 20px;
@@ -169,6 +155,29 @@ body {
         font-weight: 700;
         color: $primary-color-text;
     }
+}
+
+.label::before {
+    content: '';
+    display: block;
+    background-image: url(/todo/media/label-no-bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.title {
+    text-decoration: line-through;
+}
+
+.task_bg {
+    background-color: rgb(146, 146, 146);
 }
 
 
