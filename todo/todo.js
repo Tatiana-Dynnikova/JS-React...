@@ -91,10 +91,10 @@ divRoot.append(divTodoList);
 
 btnAdd.addEventListener('click', function() {
 
-    const fragment2 = document.createDocumentFragment();
+    const fragment = document.createDocumentFragment();
 
     const divTask = createDomElement('div', ['task', 'container']);
-    fragment2.append(divTask);
+    fragment.append(divTask);
 
     const label = createDomElement('label', ['task__label']);
     divTask.append(label);
@@ -121,7 +121,7 @@ btnAdd.addEventListener('click', function() {
 
     inputTask.value = '';
 
-    divTodoList.append(fragment2);
+    divTodoList.append(fragment);
 });
 
 
