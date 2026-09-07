@@ -97,15 +97,17 @@ btnAdd.addEventListener('click', function() {
     fragment.append(divTask);
 
     const label = createDomElement('label', ['task__label']);
+    label.setAttribute('for', 'checkbox');
     divTask.append(label);
 
     const checkbox = createDomElement('input', ['task__checkbox']);
     checkbox.setAttribute('type', 'checkbox');
+    checkbox.setAttribute('id', 'checkbox');
     label.append(checkbox);
 
-    const titleCheckbox = createDomElement('h3', ['task__title']);
-    titleCheckbox.textContent = inputTask.value;
-    divTask.append(titleCheckbox);
+    const titleTask = createDomElement('h3', ['task__title']);
+    titleTask.textContent = inputTask.value;
+    divTask.append(titleTask);
 
     const divInTask = createDomElement('div', ['task__inner-div']);
     divTask.append(divInTask);
@@ -160,8 +162,8 @@ divTodoList.addEventListener('click', (event) => {
 divTodoList.addEventListener('change', (event) => {
 
     const currentLabel = event.target.closest('.task__label');
-    console.log(event.currentLabel)
-        if (!currentLabel) {
+
+    if (!currentLabel) {
             return;
         }
 
@@ -179,6 +181,120 @@ divTodoList.addEventListener('change', (event) => {
     isChangeTitle.classList.toggle('title');
 
 });
+
+
+// const ListTodoTasks = document.querySelector('.container-tasks')
+
+// ListTodoTasks.addEventListener('change', (event) => {
+//     if (event.target.classList.contains('.task__checkbox')) {
+
+//         const isChecked = event.target.checked;
+
+//         const taskLabel = event.target.closest('.task__label')
+//         const taskItem = event.target.closest('.task');
+//         const taskTitle = event.target.closest('.task__title')
+//     }
+    
+//     if (isChecked) {    
+//         taskLabel.classList.toggle('label')
+
+//         taskItem.classList.toggle('task_bg');
+
+//         taskTitle.classList.toggle('title');
+//     }
+
+// });
+
+
+
+const todoLSKey = 'todos';
+const todos = [];
+
+function getDate(todoLSKey) {
+    let getLSValue = localStorage.getItem(todoLSKey);
+
+    if (!getLSValue) {
+      return [];
+    }
+
+    try {
+        return JSON.parse(getLSValue);
+    } catch (error) {
+        console.error('Parsing error:', error);
+        return [];
+    }
+}
+
+function setDate(todoLSKey, todos) {
+    todos = JSON.stringify(todos);
+
+    try {
+        localStorage.setItem(todoLSKey, todos);
+    } catch (error) {
+        console.error('Stringify error:', error);
+        return {};
+    }
+}
+
+// let gettodoTasks = getDate(todoLSKey);
+
+
+function getCurrentFormattDate() {
+    const now = new Date();
+
+    const formatter = new Intl.DateTimeFormat('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+        day: 'numeric',
+        month: 'short'
+    });
+
+    // Форматируем дату и переводим месяц в нижний регистр
+    const formatterDate = formatter.format(now).toLowerCase().replace(',', '');
+    return formatterDate;
+}
+
+function render(todos) {
+    todos.forEach((todo) => {
+        todo.id = crypto.randomUUID();
+        todo.text = input.value;
+        todo.date = formatterDate();
+        todo.isComplited = checkbox.value;
+
+    return todos;
+    });
+}
+
+
+function addTodoLS() {
+
+    let textTodo = document.querySelector('.task__title')
+    let checkbox = document.getElementById('checkbox');
+
+    if (checkbox.checked) {
+        newTodo.isChecked = true;
+    }
+
+    const newTodo = {
+        id: crypto.randomUUID().substr(2, 5),
+        date: getCurrentFormattDate(),
+        text: textTodo.textContent,
+        isChecked: false,
+    }
+
+    todos.push(newTodo);
+    setDate(todoLSKey, todos);
+
+    return;
+}
+
+btnAdd.addEventListener('click', function() {
+    getDate(todoLSKey);
+    addTodoLS();
+});
+
+
 
 
 
