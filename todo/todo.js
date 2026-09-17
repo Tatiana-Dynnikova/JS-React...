@@ -66,16 +66,24 @@ function getCurrentFormattDate() {
     return formattedDate;
 }
 
-function renderTodoTasks() {
+function renderTodoTasks(tasksToRender = todos) {
     divTodoList.innerHTML = ''; // Очищаем старый список
     // Обновляем счетчики
     spanCountAll.textContent = `All: ${todos.length}`;
     const completedCount = todos.filter(t => t.isChecked).length;
     spanEnded.textContent = `Completed: ${completedCount}`;
 
+    if (tasksToRender.length === 0 && inputSearch.value.trim() !== "") {
+    const emptyMessage = createDomElement('p', ['search-empty']);
+    // Безопасное добавление текста через textContent защищает от XSS
+    emptyMessage.textContent = `По запросу "${inputSearch.value}" ничего не найдено`;
+    divTodoList.append(emptyMessage);
+    return;
+  }
+
     const fragment = document.createDocumentFragment();
 
-    todos.forEach(todo => {
+    tasksToRender.forEach(todo => {
     const divTask = createDomElement('div', ['task', 'container']);
     divTask.dataset.id = todo.id;
     if (todo.isChecked) divTask.classList.add('task_bg');
@@ -175,3 +183,32 @@ btnDeleteAll.addEventListener('click', () => {
 // Первичный рендеринг при загрузке страницы
 renderTodoTasks();
 
+// Показать выполненные
+btnShowCompleted.addEventListener('click', () => {
+  const tasks = divTodoList.querySelectorAll('.task');
+  tasks.forEach(item => {
+    if(!item.classList.contains('task_bg')) {
+      item.classList.add('hidden');
+    }
+  });
+});
+
+// Показать все
+btnShowAll.addEventListener('click', () => {
+  renderTodoTasks();
+});
+
+// Поиск
+inputSearch.addEventListener('input', () => {
+  const search = inputSearch.value.trim().toLowerCase();
+
+  // Фильтруем задачи
+  const filteredTasks = todos.filter(item => {
+    return item.text.toLowerCase().includes(search);
+  });
+
+  // Передаем отфильтрованный массив в функцию рендера
+  renderTodoTasks(filteredTasks);
+});
+
+  
