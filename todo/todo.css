@@ -159,3 +159,7 @@ body {
 .task_bg {
   background-color: rgb(146, 146, 146);
 }/*# sourceMappingURL=todo.css.map */
+
+.hidden {
+  display: none;
+}
