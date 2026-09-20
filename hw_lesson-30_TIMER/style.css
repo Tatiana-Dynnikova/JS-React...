@@ -1,0 +1,30 @@
+body {
+    margin: 0 auto;
+}
+.container {
+    margin: 100px auto;
+    padding: 0 15px;
+    max-width: 40%;
+}
+.btn {
+    padding: 10px 15px;
+    min-width: 150px;
+    font-size: 26px;
+    border-radius: 15px;
+    border: none;
+}
+.start{
+    background-color: rgba(0, 250, 0, 0.5);
+}
+.end {
+    background-color: rgba(237, 28, 36, 0.5);
+}
+.time {
+    
+    padding: 15px;
+    font-size: 30px;
+    background-color: rgba(192, 192, 192, 0.5);
+    text-align: center;
+    border-radius: 15px;
+    border: 1px solid black;
+}
