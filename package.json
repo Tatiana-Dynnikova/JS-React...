@@ -1,0 +1,28 @@
+{
+  "name": "jsreact",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "lol"
+  ],
+  "homepage": "https://github.com/Tatiana-Dynnikova/JS-React...#readme",
+  "bugs": {
+    "url": "https://github.com/Tatiana-Dynnikova/JS-React.../issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tatiana-Dynnikova/JS-React....git"
+  },
+  "license": "ISC",
+  "author": "Tatsiana",
+  "type": "commonjs",
+  "main": "hw_1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  }
+}
