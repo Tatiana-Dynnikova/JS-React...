@@ -39,16 +39,23 @@ console.log(`Всего студентов: ${total.students}`);
 console.log(`Всего учителей: ${total.teachers}`);
 
 //3.Получить среднее количество студентов на всех предметах.
-const totalStudents = Object.values(subjects).reduce((acc, item) => acc + item.students, 0);
-console.log(totalStudents / Object.keys(subjects).length);
+// const totalStudents = Object.values(subjects).reduce((acc, item) => acc + item.students, 0);
+// console.log(totalStudents / Object.keys(subjects).length);
+
+const averageStudents = total.students / Object.keys(subjects).length;
+console.log(averageStudents)
 
 // 4. Создать массив из объектов предметов.
-const arrSubjects = Object.entries(subjects).map(([name, data]) => ({
-  name , ...data
-}));
+// const arrSubjects = Object.entries(subjects).map(([name, data]) => ({
+//   name , ...data
+// }));
+
+const arrSubjects = Object.values(subjects);
 console.log(arrSubjects);
 
 // 5. Получить массив из предметов и отсортировать по количеству преподавателей на
 // факультете от большего к меньшему.
-const arrSubjects2 = Object.entries(subjects).sort((prev, next) => next[1].teachers - prev[1].teachers);
+// const arrSubjects2 = Object.entries(subjects).sort((prev, next) => next[1].teachers - prev[1].teachers);
+
+const arrSubjects2 = Object.values(subjects).sort((prev, next) => next.teachers - prev.teachers);
 console.log(arrSubjects2);
