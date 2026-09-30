@@ -6,8 +6,7 @@ interface Faculties {
     countStudents: number
 }
 
-// const faculties: Faculties[] =
-const faculties: [Faculties, Faculties, Faculties, Faculties] = [
+const faculties: Faculties[] = [
     {
         id: 1,
         faculty: "History department",
@@ -57,7 +56,7 @@ type Movie = {
     production: string
 }
 
-const movies: [Movie, Movie] = [
+const movies: Movie[] = [
     {
         id: 1,
         title: "Black Widow",
